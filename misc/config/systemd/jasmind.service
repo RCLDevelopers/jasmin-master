@@ -1,0 +1,14 @@
+[Unit]
+Description=Jasmin SMS Gateway
+Requires=network.target jasmin-interceptord.service jasmin-dlrd.service jasmin-dlrlookupd.service
+After=network.target
+
+[Service]
+SyslogIdentifier=jasmind
+PIDFile=/run/jasmind.pid
+User=jasmin
+Group=jasmin
+ExecStart=/usr/local/bin/jasmind.py --username jcliadmin --password jclipwd
+
+[Install]
+WantedBy=multi-user.target

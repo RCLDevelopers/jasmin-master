@@ -1,0 +1,15 @@
+[Unit]
+Description=Jasmin SMS Gateway interceptor
+Requires=network.target jasmind.service
+After=network.target
+Before=jasmind.service
+
+[Service]
+SyslogIdentifier=interceptord
+PIDFile=/run/interceptord.pid
+User=jasmin
+Group=jasmin
+ExecStart=/usr/local/bin/interceptord.py
+
+[Install]
+WantedBy=multi-user.target
